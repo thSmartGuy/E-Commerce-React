@@ -2,19 +2,36 @@ import React, { Component } from 'react' ;
 import {storeProducts, detailProduct} from './data' ;
 
 const ProductContext = React.createContext() ;
-// shubham: provider and consumer
+// Shubham: provider and consumer
 class ProductProvider extends Component {
   state = {
-    products:storeProducts,
+    products:[],
     detailProduct:detailProduct
   }
 
-  handleDetail = () => {
-    console.log('gello from detail') ;
+  /*Shubham: componentDidMount + setProducts is copying all the data one by one so that it will not be passed by reference*/
+  componentDidMount(){
+    this.setProducts() ;
   }
 
-  addToCart = () => {
-    console.log('hello from add to cart');
+  setProducts = () => {
+    let tempProducts = [];
+    storeProducts.forEach(item => {
+      const singleItem = { ...item };
+      tempProducts = [...tempProducts, singleItem] ;
+    });
+
+    this.setState(() => {
+      return {products:tempProducts} ;
+    });
+  }
+
+  handleDetail = () => {
+    console.log('hello from detail') ;
+  }
+
+  addToCart = (id) => {
+    console.log('hello from add to cart. id is ${id}');
   }
 
   render() {

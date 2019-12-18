@@ -1,4 +1,4 @@
-See the results at: shubham-amrinder-jiit.netlify.com
+See the results at: https://shubham-amrinder-jiit.netlify.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
